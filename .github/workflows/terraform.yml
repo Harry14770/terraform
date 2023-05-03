@@ -78,6 +78,9 @@ jobs:
     - name: Terraform Init
       run: terraform init
 
+    - name: Azure Login
+      uses: Azure/login@v1
+
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan -input=false
