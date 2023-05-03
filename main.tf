@@ -70,4 +70,3 @@ resource "azurerm_public_ip" "mediawiki_public_ip" {
   allocation_method   = "Static"
 }
 
-resource "azurerm_network
