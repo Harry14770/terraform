@@ -74,12 +74,22 @@ jobs:
       with:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
+# Log in to Azure using the Azure CLI
+az login
+
+# Set the default subscription to use
+az account set --subscription <subscription_id>
+
+# Configure the Azure provider for Terraform
+cat << EOF > main.tf
+provider "azurerm" {
+  features {}
+}
+EOF
+
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
-
-    - name: Azure Login
-      uses: Azure/login@v1
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
